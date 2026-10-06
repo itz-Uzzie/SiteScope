@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, BookOpen, CheckCircle2, Gauge, Globe2, Link2, Search, ShieldCheck, Tags } from "lucide-react";
+import { ArrowUpRight, BookOpen, CheckCircle2, Gauge, Globe2, Link2, Search, ShieldCheck, Tags } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "SEO Learning Hub: On-Page, Off-Page, Speed & Indexing | SiteScope",
@@ -42,11 +44,12 @@ export default function LearnPage() {
   return <main className="min-h-screen px-4 pb-16 pt-5 sm:px-7">
     <header className="mx-auto flex max-w-6xl items-center justify-between gap-3 border-b border-slate-200 pb-4 dark:border-slate-800">
       <Link href="/" className="flex items-center gap-2 font-semibold"><Image src="/Logo/icon-48x48.png" alt="" width={32} height={32} className="size-8 object-contain" />Site<span className="-ml-2 text-emerald-600">Scope</span></Link>
-      <Link href="/" className="inline-flex items-center gap-2 rounded-lg bg-emerald-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-emerald-800"><Search size={15} /> Run an audit</Link>
+      <div className="flex items-center gap-2"><ThemeToggle /><Link href="/" className="inline-flex items-center gap-2 rounded-lg bg-emerald-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-emerald-800"><Search size={15} /> Run an audit</Link></div>
     </header>
 
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "SEO Guide", href: "/learn" }]} />
     <div className="mx-auto max-w-6xl">
-      <div className="pt-10 sm:pt-14"><Link href="/" className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-emerald-700"><ArrowLeft size={13} /> Back to SiteScope</Link><div className="mt-5 flex items-center gap-2 text-sm font-medium text-emerald-700 dark:text-emerald-300"><BookOpen size={17} /> SiteScope Learning Hub</div><h1 className="mt-3 max-w-4xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-white">SEO that helps people find and use your site</h1><p className="mt-4 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg dark:text-slate-300">A practical guide to improving pages, earning trust, speeding up your site, and helping search engines discover the right URLs. Use it as a checklist—not as a promise of a particular ranking.</p></div>
+      <div className="pt-7 sm:pt-10"><div className="flex items-center gap-2 text-sm font-medium text-emerald-700 dark:text-emerald-300"><BookOpen size={17} /> SiteScope Learning Hub</div><h1 className="mt-3 max-w-4xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-white">SEO that helps people find and use your site</h1><p className="mt-4 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg dark:text-slate-300">A practical guide to improving pages, earning trust, speeding up your site, and helping search engines discover the right URLs. Use it as a checklist—not as a promise of a particular ranking.</p></div>
 
       <div className="mt-9 grid items-start gap-7 lg:grid-cols-[220px_minmax(0,1fr)]">
         <aside className="top-5 rounded-2xl border border-slate-200 bg-white p-4 lg:sticky dark:border-slate-800 dark:bg-slate-900"><h2 className="text-xs font-semibold uppercase tracking-wider text-slate-500">On this page</h2><nav aria-label="Learning hub sections" className="mt-3 space-y-1">{contents.map(([id, label]) => <a key={id} href={`#${id}`} className="block rounded-lg px-2.5 py-2 text-sm text-slate-600 hover:bg-emerald-50 hover:text-emerald-800 dark:text-slate-300 dark:hover:bg-emerald-950/60 dark:hover:text-emerald-300">{label}</a>)}</nav><div className="mt-4 border-t border-slate-100 pt-4 text-xs leading-5 text-slate-500 dark:border-slate-800">Start by auditing a page, then work through the relevant sections below.</div></aside>

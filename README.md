@@ -48,7 +48,7 @@ Copy `.env.example` to `.env.local` and add optional provider keys. The app is d
 3. Add optional environment variables from `.env.example` in project settings.
 4. Deploy and use the provided `*.vercel.app` URL.
 
-Gemini and Groq keys are optional. A PageSpeed Insights key is optional as well. Set `NEXT_PUBLIC_SITE_URL` to the deployed base URL so canonical metadata, robots.txt, and sitemap links use the right domain. Never expose provider keys in client-side environment variables.
+Gemini and Groq keys are optional. A PageSpeed Insights key is optional as well. Set `SITE_URL` to the deployed base URL so canonical metadata, breadcrumb URLs, `robots.txt`, and sitemap links use the right domain. `NEXT_PUBLIC_SITE_URL` remains supported as a fallback for existing deployments. Set the variable in the deployment environment before building. Never expose provider keys in client-side environment variables.
 
 ## Limitations
 

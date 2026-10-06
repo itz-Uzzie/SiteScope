@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { getSiteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://sitescope.vercel.app"),
+  metadataBase: new URL(getSiteUrl()),
   title: "Free Website SEO Audit Tool | SiteScope",
   description: "Get a practical website SEO audit with scores and clear, actionable recommendations for technical SEO, content, performance, and accessibility.",
   icons: {

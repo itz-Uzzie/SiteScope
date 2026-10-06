@@ -4,10 +4,11 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { AlertCircle, ArrowLeft, ArrowRight, Check, CircleHelp, Download, ExternalLink, LoaderCircle, Moon, Printer, RefreshCw, Sparkles, Sun, X } from "lucide-react";
+import { AlertCircle, ArrowLeft, ArrowRight, Check, CircleHelp, Download, ExternalLink, LoaderCircle, Printer, RefreshCw, Sparkles, X } from "lucide-react";
 import { Bar, BarChart, CartesianGrid, Cell, Legend, Pie, PieChart, RadialBar, RadialBarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import type { AuditResult, Category, CheckResult, Status } from "@/lib/audit/types";
 import { demoAudit } from "@/lib/audit/demo";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const COLORS = { pass: "#10b981", warning: "#f59e0b", fail: "#ef4444", blue: "#3b82f6", slate: "#94a3b8" };
 const CATEGORY_LABELS: Record<Category, string> = { technical: "Technical SEO", onpage: "On-page SEO", performance: "Performance", accessibility: "Accessibility" };
@@ -37,7 +38,6 @@ export default function AuditDashboard({ initialUrl, demoMode }: { initialUrl: s
   const [explanation, setExplanation] = useState("");
   const [explainSource, setExplainSource] = useState<"gemini" | "groq" | "fallback" | "">("");
   const [explaining, setExplaining] = useState(false);
-  const [dark, setDark] = useState(false);
 
   const run = useCallback(async () => {
     if (demoMode) { setAudit(demoAudit); setLoading(false); return; }
@@ -56,7 +56,6 @@ export default function AuditDashboard({ initialUrl, demoMode }: { initialUrl: s
   }, [demoMode, initialUrl]);
 
   useEffect(() => { const timer = window.setTimeout(() => { void run(); }, 0); return () => window.clearTimeout(timer); }, [run]);
-  useEffect(() => { document.documentElement.classList.toggle("dark", dark); }, [dark]);
 
   const filtered = useMemo(() => audit?.checks.filter((item) => (filter === "all" || item.status === filter) && (categoryFilter === "all" || item.category === categoryFilter)).sort((a, b) => statusOrder[a.status] - statusOrder[b.status] || ["high", "medium", "low"].indexOf(a.severity) - ["high", "medium", "low"].indexOf(b.severity)) ?? [], [audit, filter, categoryFilter]);
 
@@ -94,7 +93,7 @@ export default function AuditDashboard({ initialUrl, demoMode }: { initialUrl: s
   return <main className="min-h-screen px-4 pb-14 pt-5 sm:px-7">
     <header className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4 dark:border-slate-800 print:hidden">
       <Link href="/" className="flex items-center gap-2 font-semibold"><Image src="/Logo/icon-48x48.png" alt="" width={32} height={32} className="size-8 object-contain" />Site<span className="-ml-2 text-emerald-600">Scope</span></Link>
-      <div className="flex flex-wrap items-center gap-2"><Link href="/learn" className="rounded-lg px-2.5 py-2 text-sm font-medium text-slate-600 hover:text-emerald-700 dark:text-slate-300">SEO guide</Link><button onClick={() => setDark((value) => !value)} aria-label="Toggle dark mode" className="rounded-lg border border-slate-200 p-2 dark:border-slate-700">{dark ? <Sun size={16} /> : <Moon size={16} />}</button><button onClick={() => void run()} className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium dark:border-slate-700"><RefreshCw size={15} /> Re-run</button><button onClick={exportJson} className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium dark:border-slate-700"><Download size={15} /> Export JSON</button><button onClick={() => window.print()} className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium dark:border-slate-700"><Printer size={15} /> Print / PDF</button></div>
+      <div className="flex flex-wrap items-center gap-2"><Link href="/learn" className="rounded-lg px-2.5 py-2 text-sm font-medium text-slate-600 hover:text-emerald-700 dark:text-slate-300">SEO guide</Link><ThemeToggle /><button onClick={() => void run()} className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium dark:border-slate-700"><RefreshCw size={15} /> Re-run</button><button onClick={exportJson} className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium dark:border-slate-700"><Download size={15} /> Export JSON</button><button onClick={() => window.print()} className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium dark:border-slate-700"><Printer size={15} /> Print / PDF</button></div>
     </header>
 
     <div className="mx-auto max-w-7xl">

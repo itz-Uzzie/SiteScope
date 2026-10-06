@@ -2,6 +2,7 @@ import { BarChart3, Gauge, ShieldCheck, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import UrlForm from "@/components/UrlForm";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const features = [
   { icon: ShieldCheck, title: "Technical health", description: "HTTPS, crawlability, metadata, and structured data." },
@@ -19,7 +20,7 @@ export default function Home() {
           <Image src="/Logo/icon-48x48.png" alt="" width={36} height={36} priority className="size-9 object-contain" />
           <span>Site<span className="text-emerald-600">Scope</span></span>
         </Link>
-        <div className="flex items-center gap-3"><Link href="/learn" className="text-sm font-medium text-slate-600 hover:text-emerald-700 dark:text-slate-300 dark:hover:text-emerald-300">SEO guide</Link><span className="hidden rounded-full border border-slate-200 bg-white/70 px-3 py-1.5 text-xs font-medium text-slate-600 sm:inline dark:border-slate-800 dark:bg-slate-900/70 dark:text-slate-300">Free website SEO audit</span></div>
+        <div className="flex items-center gap-3"><Link href="/learn" className="text-sm font-medium text-slate-600 hover:text-emerald-700 dark:text-slate-300 dark:hover:text-emerald-300">SEO guide</Link><span className="hidden rounded-full border border-slate-200 bg-white/70 px-3 py-1.5 text-xs font-medium text-slate-600 sm:inline dark:border-slate-800 dark:bg-slate-900/70 dark:text-slate-300">Free website SEO audit</span><ThemeToggle /></div>
       </header>
 
       <section className="mx-auto flex max-w-4xl flex-col items-center pb-14 pt-20 text-center sm:pt-28">
