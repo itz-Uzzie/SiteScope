@@ -1,4 +1,5 @@
-import { BarChart3, Gauge, Search, ShieldCheck, Sparkles } from "lucide-react";
+import { BarChart3, Gauge, ShieldCheck, Sparkles } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import UrlForm from "@/components/UrlForm";
 
@@ -15,7 +16,7 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[560px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-100/70 via-slate-50 to-transparent dark:from-emerald-950/40 dark:via-slate-950 dark:to-transparent" />
       <header className="mx-auto flex max-w-6xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 font-semibold tracking-tight">
-          <span className="grid size-9 place-items-center rounded-xl bg-emerald-600 text-white shadow-sm"><Search size={18} /></span>
+          <Image src="/Logo/icon-48x48.png" alt="" width={36} height={36} priority className="size-9 object-contain" />
           <span>Site<span className="text-emerald-600">Scope</span></span>
         </Link>
         <div className="flex items-center gap-3"><Link href="/learn" className="text-sm font-medium text-slate-600 hover:text-emerald-700 dark:text-slate-300 dark:hover:text-emerald-300">SEO guide</Link><span className="hidden rounded-full border border-slate-200 bg-white/70 px-3 py-1.5 text-xs font-medium text-slate-600 sm:inline dark:border-slate-800 dark:bg-slate-900/70 dark:text-slate-300">Free website SEO audit</span></div>

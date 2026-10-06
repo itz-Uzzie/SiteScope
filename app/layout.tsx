@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://sitescope.vercel.app"),
   title: "Free Website SEO Audit Tool | SiteScope",
   description: "Get a practical website SEO audit with scores and clear, actionable recommendations for technical SEO, content, performance, and accessibility.",
+  icons: {
+    icon: [{ url: "/Logo/icon-32x32.png", sizes: "32x32", type: "image/png" }, { url: "/Logo/icon-48x48.png", sizes: "48x48", type: "image/png" }],
+    apple: "/Logo/icon-180x180.png",
+  },
   alternates: { canonical: "/" },
   openGraph: {
     title: "Free Website SEO Audit Tool | SiteScope",

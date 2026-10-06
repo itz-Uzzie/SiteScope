@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, BookOpen, CheckCircle2, Gauge, Globe2, Link2, Search, ShieldCheck, Tags } from "lucide-react";
 
@@ -40,7 +41,7 @@ function InfoCard({ title, children }: { title: string; children: ReactNode }) {
 export default function LearnPage() {
   return <main className="min-h-screen px-4 pb-16 pt-5 sm:px-7">
     <header className="mx-auto flex max-w-6xl items-center justify-between gap-3 border-b border-slate-200 pb-4 dark:border-slate-800">
-      <Link href="/" className="flex items-center gap-2 font-semibold"><span className="grid size-8 place-items-center rounded-lg bg-emerald-600 text-white"><Search size={16} /></span>Site<span className="-ml-2 text-emerald-600">Scope</span></Link>
+      <Link href="/" className="flex items-center gap-2 font-semibold"><Image src="/Logo/icon-48x48.png" alt="" width={32} height={32} className="size-8 object-contain" />Site<span className="-ml-2 text-emerald-600">Scope</span></Link>
       <Link href="/" className="inline-flex items-center gap-2 rounded-lg bg-emerald-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-emerald-800"><Search size={15} /> Run an audit</Link>
     </header>
 
