@@ -34,7 +34,7 @@ describe("URL safety", () => {
     expect(normalizeAuditUrl("http://example.com")).toBe("http://example.com");
   });
 
-  it.each(["http://127.0.0.1", "http://10.0.0.8", "http://172.16.2.1", "http://192.168.1.2", "http://169.254.169.254", "http://[::1]", "http://[fd00::1]", "http://[fe80::1]", "http://localhost", "http://router.local", "http://name.internal", "http://user:pass@example.com"]) ("rejects unsafe address %s", async (url) => {
+  it.each(["ftp://example.com", "http://127.0.0.1", "http://10.0.0.8", "http://172.16.2.1", "http://192.168.1.2", "http://169.254.169.254", "http://[::1]", "http://[fd00::1]", "http://[fe80::1]", "http://localhost", "http://router.local", "http://name.internal", "http://user:pass@example.com"]) ("rejects unsafe address %s", async (url) => {
     await expect(validatePublicUrl(url)).rejects.toBeInstanceOf(UnsafeUrlError);
   });
 });

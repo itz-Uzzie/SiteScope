@@ -1,5 +1,6 @@
-import { ArrowRight, BarChart3, Gauge, Search, ShieldCheck, Sparkles } from "lucide-react";
+import { BarChart3, Gauge, Search, ShieldCheck, Sparkles } from "lucide-react";
 import Link from "next/link";
+import UrlForm from "@/components/UrlForm";
 
 const features = [
   { icon: ShieldCheck, title: "Technical health", description: "HTTPS, crawlability, metadata, and structured data." },
@@ -31,21 +32,9 @@ export default function Home() {
           Get a practical SEO health check in seconds. Find technical issues, improve your content, and learn what to fix next.
         </p>
 
-        <form action="/results" className="mt-9 flex w-full max-w-2xl flex-col gap-2 rounded-2xl border border-slate-200 bg-white p-2 shadow-xl shadow-slate-900/5 sm:flex-row dark:border-slate-800 dark:bg-slate-900">
-          <label htmlFor="url" className="sr-only">Website URL to audit</label>
-          <input id="url" name="url" type="text" inputMode="url" autoComplete="url" placeholder="https://yourwebsite.com" required className="min-w-0 flex-1 rounded-xl bg-transparent px-4 py-3.5 text-base text-slate-900 outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-emerald-500/30 dark:text-white" />
-          <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-6 py-3.5 font-medium text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-500/30">
-            Analyze website <ArrowRight size={17} />
-          </button>
-        </form>
+        <UrlForm />
         <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">No account needed · Results include clear, actionable recommendations</p>
-        <a href="/results?demo=1" className="mt-4 text-xs font-medium text-emerald-700 underline decoration-emerald-300 underline-offset-4 hover:text-emerald-800 dark:text-emerald-300">Explore a demo audit</a>
-
-        <div className="mt-10 grid w-full max-w-2xl grid-cols-2 gap-2 sm:grid-cols-3">
-          {["https://example.com", "https://stripe.com", "https://vercel.com"].map((url) => (
-            <a key={url} href={`/results?url=${encodeURIComponent(url)}`} className="rounded-lg border border-slate-200/80 bg-white/60 px-3 py-2 text-xs text-slate-600 transition hover:border-emerald-300 hover:text-emerald-700 dark:border-slate-800 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:text-emerald-300">Try {url.replace("https://", "")}</a>
-          ))}
-        </div>
+        <Link href="/results?demo=1" className="mt-4 text-xs font-medium text-emerald-700 underline decoration-emerald-300 underline-offset-4 hover:text-emerald-800 dark:text-emerald-300">Explore a demo audit</Link>
       </section>
 
       <section className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-3" aria-label="Audit features">

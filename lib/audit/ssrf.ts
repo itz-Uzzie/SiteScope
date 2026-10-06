@@ -10,7 +10,8 @@ export class UnsafeUrlError extends Error {
 
 export function normalizeAuditUrl(input: string): string {
   const trimmed = input.trim();
-  return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+  if (/^https?:\/\//i.test(trimmed) || /^[a-z][a-z\d+.-]*:/i.test(trimmed)) return trimmed;
+  return `https://${trimmed}`;
 }
 
 function isPrivateIpv4(address: string): boolean {
@@ -49,7 +50,7 @@ export async function validatePublicUrl(input: string): Promise<URL> {
     throw new UnsafeUrlError("Invalid URL");
   }
 
-  if (url.protocol !== "http:" && url.protocol !== "https:") throw new UnsafeUrlError();
+  if (url.protocol !== "http:" && url.protocol !== "https:") throw new UnsafeUrlError("Invalid URL");
   if (url.username || url.password) throw new UnsafeUrlError();
   const hostname = url.hostname.toLowerCase().replace(/\.$/, "");
   if (!hostname || hostname === "localhost" || hostname.endsWith(".local") || hostname.endsWith(".internal")) {
