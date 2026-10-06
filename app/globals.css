@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+html { color-scheme: light; }
+html.dark { color-scheme: dark; }
+body { min-height: 100%; font-family: Arial, Helvetica, sans-serif; }
+
+@media print {
+  body { background: white !important; color: #111827 !important; }
+  .print\:hidden { display: none !important; }
+  main { padding: 0 !important; }
+  section, article { break-inside: avoid; box-shadow: none !important; }
+  details > summary { list-style: none; }
+  details > p { display: block !important; }
+}
