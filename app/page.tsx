@@ -18,7 +18,7 @@ export default function Home() {
           <span className="grid size-9 place-items-center rounded-xl bg-emerald-600 text-white shadow-sm"><Search size={18} /></span>
           <span>Site<span className="text-emerald-600">Scope</span></span>
         </Link>
-        <span className="rounded-full border border-slate-200 bg-white/70 px-3 py-1.5 text-xs font-medium text-slate-600 dark:border-slate-800 dark:bg-slate-900/70 dark:text-slate-300">Free website SEO audit</span>
+        <div className="flex items-center gap-3"><Link href="/learn" className="text-sm font-medium text-slate-600 hover:text-emerald-700 dark:text-slate-300 dark:hover:text-emerald-300">SEO guide</Link><span className="hidden rounded-full border border-slate-200 bg-white/70 px-3 py-1.5 text-xs font-medium text-slate-600 sm:inline dark:border-slate-800 dark:bg-slate-900/70 dark:text-slate-300">Free website SEO audit</span></div>
       </header>
 
       <section className="mx-auto flex max-w-4xl flex-col items-center pb-14 pt-20 text-center sm:pt-28">
