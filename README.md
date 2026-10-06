@@ -2,6 +2,10 @@
 
 SiteScope is a free, deployable SEO audit app. Enter a public website address to get a score, practical recommendations, and an explanation of what to improve.
 
+## License
+
+This project is licensed under the ISC License. See [LICENSE](./LICENSE).
+
 ## Features
 
 - Technical, on-page, performance, and accessibility checks
